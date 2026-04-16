@@ -9,9 +9,9 @@ use Spatie\Url\Exceptions\InvalidArgument;
 
 final class Utf8UrlSanitizer implements UrlSanitizer
 {
-    private const array SCALAR_PARTS = ['host', 'path', 'user', 'pass', 'fragment'];
+    private const SCALAR_PARTS = ['host', 'path', 'user', 'pass', 'fragment'];
 
-    private const array OPAQUE_SCHEMES = ['mailto', 'tel'];
+    private const OPAQUE_SCHEMES = ['mailto', 'tel'];
 
     public function sanitize(SanitizedUrlInput $input): SanitizedUrlInput
     {
