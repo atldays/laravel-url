@@ -1,10 +1,20 @@
 {
     "name": "atldays/laravel-url",
-    "description": "Laravel package for working with URLs.",
+    "description": "Laravel package for URL value objects, sanitization pipelines, browser URL support, validation rules, request macros, and Laravel Data integration.",
     "keywords": [
         "laravel",
-        "url"
+        "laravel-package",
+        "url",
+        "urls",
+        "browser-url",
+        "url-validation",
+        "url-sanitizer",
+        "request-macros",
+        "value-object",
+        "spatie-url",
+        "laravel-data"
     ],
+    "homepage": "https://github.com/atldays/laravel-url",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -14,6 +24,10 @@
             "role": "Developer"
         }
     ],
+    "support": {
+        "issues": "https://github.com/atldays/laravel-url/issues",
+        "source": "https://github.com/atldays/laravel-url"
+    },
     "require": {
         "php": "^8.2",
         "ext-iconv": "*",
