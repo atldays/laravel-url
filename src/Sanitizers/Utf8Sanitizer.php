@@ -7,7 +7,7 @@ namespace Atldays\Url\Sanitizers;
 use Atldays\Url\SanitizedUrlInput;
 use Spatie\Url\Exceptions\InvalidArgument;
 
-final class Utf8UrlSanitizer implements UrlSanitizer
+final class Utf8Sanitizer implements UrlSanitizer
 {
     private const SCALAR_PARTS = ['host', 'path', 'user', 'pass', 'fragment'];
 

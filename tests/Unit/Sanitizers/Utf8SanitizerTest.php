@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Atldays\Url\Tests;
 
 use Atldays\Url\SanitizedUrlInput;
-use Atldays\Url\Sanitizers\Utf8UrlSanitizer;
+use Atldays\Url\Sanitizers\Utf8Sanitizer;
 
-final class Utf8UrlSanitizerTest extends TestCase
+final class Utf8SanitizerTest extends TestCase
 {
-    private Utf8UrlSanitizer $sanitizer;
+    private Utf8Sanitizer $sanitizer;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->sanitizer = new Utf8UrlSanitizer;
+        $this->sanitizer = new Utf8Sanitizer;
     }
 
     public function test_it_keeps_valid_utf8_untouched(): void

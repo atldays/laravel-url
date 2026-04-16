@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Atldays\Url\Sanitizers\ControlCharsSanitizer;
 use Atldays\Url\Sanitizers\HeaderValueSanitizer;
-use Atldays\Url\Sanitizers\Utf8UrlSanitizer;
+use Atldays\Url\Sanitizers\Utf8Sanitizer;
 
 return [
     /*
@@ -41,13 +41,13 @@ return [
         |--------------------------------------------------------------------------
         |
         | The default profile is intended for regular application input. It
-        | removes invalid UTF-8 sequences first and then strips control
-        | characters that should not appear in a safe URL string.
+        | strips control characters before parsing and then removes invalid
+        | UTF-8 sequences so the URL parser works with a clean string.
         |
         */
         'default' => [
-            Utf8UrlSanitizer::class,
             ControlCharsSanitizer::class,
+            Utf8Sanitizer::class,
         ],
 
         /*
@@ -56,14 +56,15 @@ return [
         |--------------------------------------------------------------------------
         |
         | The header profile is designed for values coming from HTTP headers.
-        | In addition to UTF-8 and control-character cleanup, it also trims
-        | header wrappers and whitespace noise before URL parsing begins.
+        | It first trims header wrappers and whitespace noise, then removes
+        | control characters, and finally normalizes invalid UTF-8 before
+        | URL parsing begins.
         |
         */
         'header' => [
-            Utf8UrlSanitizer::class,
-            ControlCharsSanitizer::class,
             HeaderValueSanitizer::class,
+            ControlCharsSanitizer::class,
+            Utf8Sanitizer::class,
         ],
     ],
 ];
