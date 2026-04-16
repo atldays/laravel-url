@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atldays\Url;
 
 use Atldays\Url\Contracts\Url as UrlContract;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\Request;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -30,14 +31,18 @@ class UrlServiceProvider extends PackageServiceProvider
         $this->registerRequestMacros();
     }
 
+    /**
+     * @throws BindingResolutionException
+     */
     protected function registerRequestMacros(): void
     {
-        Request::macro('getUrlFromHeader', function (string $header, ?UrlContract $default = null): ?UrlContract {
+        $factory = $this->app->make(UrlFactory::class);
+
+        Request::macro('getUrlFromHeader', function (string $header, ?UrlContract $default = null) use ($factory): ?UrlContract {
             /** @var Request $this */
             $value = $this->header($header);
-            $factory = app(UrlFactory::class);
 
-            if (is_string($value) && is_url($value)) {
+            if (is_string($value)) {
                 $url = $factory->makeOrNull($value, 'header');
 
                 if ($url !== null && !$url->isIpHost()) {
@@ -58,9 +63,9 @@ class UrlServiceProvider extends PackageServiceProvider
             return $this->getUrlFromHeader('referer', $default);
         });
 
-        Request::macro('getFullUrl', function (): UrlContract {
+        Request::macro('getFullUrl', function () use ($factory): UrlContract {
             /** @var Request $this */
-            return app(UrlFactory::class)->make($this->fullUrl());
+            return $factory->make($this->fullUrl());
         });
     }
 }

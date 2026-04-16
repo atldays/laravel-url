@@ -10,8 +10,6 @@ use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Translation\PotentiallyTranslatedString;
 use Spatie\Url\Exceptions\InvalidArgument;
 
-use function Atldays\Url\is_url;
-
 readonly class Url implements ValidationRule
 {
     /**
@@ -41,7 +39,7 @@ readonly class Url implements ValidationRule
             return;
         }
 
-        if (!is_url($value)) {
+        if (filter_var($value, FILTER_VALIDATE_URL) === false) {
             $fail('url::validation.url')->translate();
         }
     }

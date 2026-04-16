@@ -29,14 +29,11 @@
     "orchestra/testbench": "^9.0|^10.0|^11.0",
     "phpunit/phpunit": "^11.0|^12.5"
   },
-  "autoload": {
-    "psr-4": {
-      "Atldays\\Url\\": "src/"
+    "autoload": {
+        "psr-4": {
+            "Atldays\\Url\\": "src/"
+        }
     },
-    "files": [
-      "src/helpers.php"
-    ]
-  },
   "autoload-dev": {
     "psr-4": {
       "Atldays\\Url\\Tests\\": "tests/"
