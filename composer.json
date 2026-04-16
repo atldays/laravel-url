@@ -1,63 +1,67 @@
 {
-  "name": "atldays/laravel-url",
-  "description": "Laravel package for working with URLs.",
-  "keywords": [
-    "laravel",
-    "url"
-  ],
-  "type": "library",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Anjey Tsibylskij",
-      "homepage": "https://github.com/atldays",
-      "role": "Developer"
-    }
-  ],
-  "require": {
-    "php": "^8.2",
-    "ext-iconv": "*",
-    "illuminate/contracts": "^11.0|^12.0|^13.0",
-    "illuminate/http": "^11.0|^12.0|^13.0",
-    "illuminate/support": "^11.0|^12.0|^13.0",
-    "illuminate/translation": "^11.0|^12.0|^13.0",
-    "spatie/laravel-package-tools": "^1.93",
-    "spatie/url": "^2.4"
-  },
-  "require-dev": {
-    "laravel/pint": "^1.18",
-    "orchestra/testbench": "^9.0|^10.0|^11.0",
-    "phpunit/phpunit": "^11.0|^12.5"
-  },
+    "name": "atldays/laravel-url",
+    "description": "Laravel package for working with URLs.",
+    "keywords": [
+        "laravel",
+        "url"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anjey Tsibylskij",
+            "homepage": "https://github.com/atldays",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "ext-iconv": "*",
+        "illuminate/contracts": "^11.0|^12.0|^13.0",
+        "illuminate/http": "^11.0|^12.0|^13.0",
+        "illuminate/support": "^11.0|^12.0|^13.0",
+        "illuminate/translation": "^11.0|^12.0|^13.0",
+        "spatie/laravel-package-tools": "^1.93",
+        "spatie/url": "^2.4"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.18",
+        "orchestra/testbench": "^9.0|^10.0|^11.0",
+        "phpunit/phpunit": "^11.0|^12.5",
+        "spatie/laravel-data": "^4.20"
+    },
+    "suggest": {
+        "spatie/laravel-data": "Required to use the Data cast and transformer integrations."
+    },
     "autoload": {
         "psr-4": {
             "Atldays\\Url\\": "src/"
         }
     },
-  "autoload-dev": {
-    "psr-4": {
-      "Atldays\\Url\\Tests\\": "tests/"
-    }
-  },
-  "extra": {
-    "laravel": {
-      "providers": [
-        "Atldays\\Url\\UrlServiceProvider"
-      ],
-      "aliases": {
-        "Url": "Atldays\\Url\\Facades\\Url"
-      }
-    }
-  },
-  "scripts": {
-    "test": "vendor/bin/phpunit",
-    "format": "vendor/bin/pint",
-    "format:test": "vendor/bin/pint --test",
-    "hooks:install": "git config core.hooksPath .githooks"
-  },
-  "config": {
-    "sort-packages": true
-  },
-  "minimum-stability": "stable",
-  "prefer-stable": true
+    "autoload-dev": {
+        "psr-4": {
+            "Atldays\\Url\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Atldays\\Url\\UrlServiceProvider"
+            ],
+            "aliases": {
+                "Url": "Atldays\\Url\\Facades\\Url"
+            }
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "format": "vendor/bin/pint",
+        "format:test": "vendor/bin/pint --test",
+        "hooks:install": "git config core.hooksPath .githooks"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }
