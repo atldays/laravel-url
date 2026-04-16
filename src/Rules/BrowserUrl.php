@@ -10,9 +10,7 @@ use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Translation\PotentiallyTranslatedString;
 use Spatie\Url\Exceptions\InvalidArgument;
 
-use function Atldays\Url\is_url;
-
-readonly class Url implements ValidationRule
+readonly class BrowserUrl implements ValidationRule
 {
     /**
      * @param Closure(string): PotentiallyTranslatedString $fail
@@ -24,7 +22,7 @@ readonly class Url implements ValidationRule
         }
 
         if (!is_string($value)) {
-            $fail('url::validation.url')->translate();
+            $fail('url::validation.browser_url')->translate();
 
             return;
         }
@@ -32,17 +30,13 @@ readonly class Url implements ValidationRule
         try {
             $url = UrlFacade::make($value);
         } catch (InvalidArgument) {
-            $fail('url::validation.url')->translate();
+            $fail('url::validation.browser_url')->translate();
 
             return;
         }
 
-        if ($url->hasBrowserScheme()) {
-            return;
-        }
-
-        if (!is_url($value)) {
-            $fail('url::validation.url')->translate();
+        if (!$url->hasBrowserScheme()) {
+            $fail('url::validation.browser_url')->translate();
         }
     }
 }

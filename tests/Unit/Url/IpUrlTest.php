@@ -9,17 +9,17 @@ use PHPUnit\Framework\TestCase;
 
 final class IpUrlTest extends TestCase
 {
-    public function test_is_ip(): void
+    public function test_is_ip_host(): void
     {
         $url = Url::fromString('http://233.221.22.33/');
 
-        $this->assertTrue($url->isIp());
+        $this->assertTrue($url->isIpHost());
     }
 
-    public function test_is_not_ip(): void
+    public function test_is_not_ip_host(): void
     {
         $url = Url::fromString('https://google.com');
 
-        $this->assertFalse($url->isIp());
+        $this->assertFalse($url->isIpHost());
     }
 }

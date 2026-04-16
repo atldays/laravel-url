@@ -8,11 +8,9 @@ use Psr\Http\Message\UriInterface;
 
 interface Url extends Query, Segment, UriInterface
 {
-    public function isIp(): bool;
+    public function isIpHost(): bool;
 
-    public function hasBrowserSpecificScheme(): bool;
-
-    public function isBrowserSpecific(): bool;
+    public function hasBrowserScheme(): bool;
 
     public function getBase(): string;
 }

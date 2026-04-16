@@ -60,17 +60,12 @@ final class WrapTest extends TestCase
                 return 'https://example.com/path?value=1';
             }
 
-            public function isIp(): bool
+            public function isIpHost(): bool
             {
                 return false;
             }
 
-            public function hasBrowserSpecificScheme(): bool
-            {
-                return false;
-            }
-
-            public function isBrowserSpecific(): bool
+            public function hasBrowserScheme(): bool
             {
                 return false;
             }

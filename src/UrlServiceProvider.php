@@ -40,7 +40,7 @@ class UrlServiceProvider extends PackageServiceProvider
             if (is_string($value) && is_url($value)) {
                 $url = $factory->makeOrNull($value, 'header');
 
-                if ($url !== null && !$url->isIp()) {
+                if ($url !== null && !$url->isIpHost()) {
                     return $url;
                 }
             }
